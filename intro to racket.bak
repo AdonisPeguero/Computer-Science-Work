@@ -1,0 +1,2 @@
+(define (make-seq-list x y)
+		(if (>= x y) (if (= x y) (cons y empty) #f (cons x (make-seg-list (+x1) y))))

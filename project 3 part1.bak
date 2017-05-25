@@ -1,0 +1,14 @@
+#lang racket
+(define fac
+  (lambda (s)
+    (cond
+     ((= s 0) 1)
+     ((= s 1) 1)
+     (else (* s (fac (- s 1)))))))
+
+(define fac*
+  (lambda (s)
+    (cond
+      ((null? (cdr s)) (fac (car s)))
+      (else
+       (cons (fac (car s)) (fac* (cdr s)))))))

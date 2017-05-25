@@ -1,0 +1,102 @@
+#lang racket
+;Parth Pastagia
+;Programming Languages
+;****************************************
+
+; Function 1 (make-seq-List)
+
+(define (make-seq-List x y)
+  (if (>= x y) (if (= x y)
+                   (cons y empty) #f)
+      (cons x (make-seq-List (+ x 1) y))))
+;****************************************
+
+;2 (make-whole-list)
+
+(define (make-whole-list x)
+  (rest (build-list (+ 1 x) values)))
+;****************************************
+
+; 3 (find-ith-element)
+
+(define (my-search lst n)
+  (list-ref lst (- n 1)))
+;****************************************
+
+;4(last-element)
+ (define (last-element plst)
+   (last plst))
+;****************************************
+
+; 5 (list-element)
+(define (list-element lst)
+  (cond
+   [(empty? lst) 0]
+   [else (+ 1 (list-element (rest lst)))]))
+;****************************************
+
+;6 (concat-list)
+
+(define (conc-list np pn)
+  (if (null? np)
+      pn
+      (cons (car np) (conc-list (cdr np) pn))))
+;****************************************
+
+;7 (reverse-list)
+(define rever
+    (lambda (n)
+        (if (null? n)
+        '()
+         (append (rever (cdr n)) (list (car n))))))
+;****************************************
+
+;8 (max & min- element)
+(define (max-elem list)
+  (cond ((null?  (cdr list)) (car list))
+        ((> (car list) (max-elem (cdr list))) (car list))
+        (else (max-elem (cdr list)))) )
+
+(define (min-elem list)
+  (cond ((null?  (cdr list)) (car list))
+        ((< (car list) (min-elem (cdr list))) (car list))
+        (else (min-elem (cdr list)))) )
+;****************************************
+
+;9 (even and odd)
+(define (even n)
+	(filter even? n))
+
+
+(define (odd p)
+	(filter odd? p))
+;****************************************
+
+;10(merge)
+
+(define (merge np pn)
+  (cond
+    [(null? np) pn]
+    
+    [(null? pn) np]
+    
+    [(< (car np) (car pn))
+    
+     (cons (car np) (merge (cdr np) pn))]
+    
+    [#t 
+     (cons (car pn) (merge np (cdr pn)))]))
+;****************************************    
+
+;11(merge-sort)
+(define (merge-sort mlist1)
+  (cond
+    [(or (null? mlist1) (null? (cdr mlist1))) mlist1]
+    [(null? (cddr mlist1))
+     (merge (list (car mlist1)) (cdr mlist1))]
+    [#t
+     (let ([x (ceiling (/ (length mlist1) 2))])
+       (merge (merge-sort (take mlist1 x))
+                    (merge-sort (drop mlist1 x))))]))
+
+
