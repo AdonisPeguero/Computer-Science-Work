@@ -1,0 +1,72 @@
+body {
+
+        font-family: sans-serif, arial;
+        margin: 0;
+        padding: 0;
+        
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	border: 0;
+	margin: 0;
+	padding: 0;
+        font-weight: normal;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+body { line-height: 1; }
+
+ol, ul , li {list-style: none; margin: 0; padding: 0;}
+
+a{text-decoration: none; color: black; outline: 0;}
+
+section, article, aside, header, footer, nav, figure, figcaption{
+    display: block;
+}
+time, mark { 
+    display: inline-block;
+}
+
+img{
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/*<<<<<<<<< Start Style >>>>>>>>>>>>*/
+
+/*========Basic Style==========*/
+
+.stracture{
+ width: 960px;
+ margin: 0 auto;
+ transition: all 0.9s ease 0s;
+ -moz-transition: all 0.9s ease 0s;
+ -webkit-transition: all 0.9s ease 0s;
+ -ms-transition: all 0.9s ease 0s;
+ -o-transition: all 0.9s ease 0s;
+}
+.floatleft{float: left;}
+.floatright{float: right;}
+.fix{overflow: hidden;}
+
+/*============Fonts=============*/
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src:url('../fonts/glyphicons-halflings-regular.ttf');
+}
+
+
+
+/*======Main Style=====*/
+
