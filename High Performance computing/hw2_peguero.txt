@@ -1,0 +1,30 @@
+default program	time:
+gcc no optimization	23.3s
+gcc with -o0	23.31s
+gcc with -o1	23.3s
+gcc with -o2	23.26s
+icc no optimization	11.66s
+icc with -o0	11.66s
+icc with -o1	11.63s
+icc with -o2	11.62s
+icc with -fast	11.61s
+	
+my program	
+icc no optimization	0.32s
+icc with -o0	0.32s
+icc with -o1	0.32s
+icc with -o2	0.32s
+icc with -fast	0.32s
+gcc no optimization	1.33s
+gcc with -o0	1.34s
+gcc with -o1	1.33s
+gcc with -o2	1.33s
+
+I tried every optimisation you mention in the sept 19 notes
+and the only thing that made a big difference was deleting 
+unnecessary arrays and combining similar arrays. 
+The other optimization techniques actually made 
+the program run slower. I compiled my program every time
+I optimized something and every time I used icc -o0,-o1,-o2 
+this come up: command line warning #10122: overriding '-o1' with '-ohw2_peguero'
+I have no clue what this is, sent help.

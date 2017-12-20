@@ -1,0 +1,1204 @@
+
+Setting environment for using XAMPP for Windows.
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 80
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use users
+Database changed
+MariaDB [users]> SELECT pass FROM users WHERE pass = 'luis';
+Empty set (0.00 sec)
+
+MariaDB [users]> SELECT email FROM users WHERE pass = 'luis';
+Empty set (0.00 sec)
+
+MariaDB [users]> SELECT email FROM users WHERE email = 'f';
+Empty set (0.00 sec)
+
+MariaDB [users]> SELECT email FROM users WHERE email = 'fdsdd@hotmail.com';
++-------------------+
+| email             |
++-------------------+
+| fdsdd@hotmail.com |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [users]> SELEcT * from users
+    -> ;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [users]> SELECT pass FROM users WHERE email = fdsdd@hotmail.com
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@hotmail.com' at line 1
+MariaDB [users]> SELECT pass FROM users WHERE email = 'fdsdd@hotmail.com';
++---------------------------+
+| pass                      |
++---------------------------+
+| faea5242a00c52da62a0f00df |
++---------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [users]> show databas
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databas' at line 1
+MariaDB [users]> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [users]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test               |
+| users              |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [users]> create  database Books;
+ERROR 1044 (42000): Access denied for user 'adonis'@'localhost' to database 'books'MariaDB [users]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 134
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create  database Books;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 135
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test               |
+| users              |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [(none)]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+#
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 136
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select Books;
+ERROR 1054 (42S22): Unknown column 'Books' in 'field list'
+MariaDB [(none)]> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> USE Books;
+Database changed
+MariaDB [Books]> grant all on users.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [Books]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 137
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE Books;
+ERROR 1044 (42000): Access denied for user 'adonis'@'localhost' to database 'books'MariaDB [(none)]> grant all on Books.* to "adonis"@"localhost";
+ERROR 1044 (42000): Access denied for user 'adonis'@'localhost' to database 'Books'MariaDB [(none)]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 138
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant all on Books.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 139
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE Books;
+Database changed
+MariaDB [Books]> CREATE TABLE Books (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,ISBN varchar(35) NOT NULL,
+    ->        Author varchar(50) NOT NULL,
+    ->        Title varchar(255) NOT NULL,
+    ->        Year int NOT NULL default 2000,
+    ->         PRIMARY KEY (Book_id)
+    ->        );
+ERROR 1072 (42000): Key column 'Book_id' doesn't exist in table
+MariaDB [Books]> CREATE TABLE Books (
+    ->        Book_id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ->        ISBN varchar(35) NOT NULL,
+    ->        Author varchar(50) NOT NULL,
+    ->        Title varchar(255) NOT NULL,
+    ->        Year int NOT NULL default 2000,
+    ->         PRIMARY KEY (Book_id)
+    ->        );
+Query OK, 0 rows affected (0.20 sec)
+
+MariaDB [Books]> desc Books;
++---------+-----------------------+------+-----+---------+----------------+
+| Field   | Type                  | Null | Key | Default | Extra          |
++---------+-----------------------+------+-----+---------+----------------+
+| Book_id | mediumint(8) unsigned | NO   | PRI | NULL    | auto_increment |
+| ISBN    | varchar(35)           | NO   |     | NULL    |                |
+| Author  | varchar(50)           | NO   |     | NULL    |                |
+| Title   | varchar(255)          | NO   |     | NULL    |                |
+| Year    | int(11)               | NO   |     | 2000    |                |
++---------+-----------------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+MariaDB [Books]> INSERT INTO Books VALUES(NULL, '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.09 sec)
+
+MariaDB [Books]> INSERT INTO Books VALUES(NULL, '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Books]> INSERT INTO Books VALUES(NULL, '978-1782175919', 'Paul Wellens', 'Practical Web Development', 2015);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [Books]> Select * from Books;
++---------+----------------+---------------+------------------------------------------------+------+
+| Book_id | ISBN           | Author        | Title                                          | Year |
++---------+----------------+---------------+------------------------------------------------+------+
+|       1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|       2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|       3 | 978-1782175919 | Paul Wellens  | Practical Web Development                      | 2015 |
++---------+----------------+---------------+------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> UPDATE Books SET ISBN='978-0321833891' WHERE book_id= 1;
+Query OK, 0 rows affected (0.03 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+MariaDB [Books]> DELETE from Books WHERE book_id=1;
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [Books]> INSERT INTO Books VALUES(1, '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Books]> Select * from Books;
++---------+----------------+---------------+------------------------------------------------+------+
+| Book_id | ISBN           | Author        | Title                                          | Year |
++---------+----------------+---------------+------------------------------------------------+------+
+|       1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|       2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|       3 | 978-1782175919 | Paul Wellens  | Practical Web Development                      | 2015 |
++---------+----------------+---------------+------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> "SELECT CONCAT(Title) AS Title, CONCAT(Year) AS Year ORDER BY Book_id ";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"SELECT CONCAT(Title) AS Title, CONCAT(Year) AS Year ORDER BY Book_id "' at line 1
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, CONCAT(Year) AS Year ORDER BY Book_id ASC;
+ERROR 1054 (42S22): Unknown column 'Title' in 'field list'
+MariaDB [Books]> SELECT CONCAT(Title) AS Title;
+ERROR 1054 (42S22): Unknown column 'Title' in 'field list'
+MariaDB [Books]> SELECT CONCAT(Title) AS Title from Books;
++------------------------------------------------+
+| Title                                          |
++------------------------------------------------+
+| PHP and MySQL Web Development                  |
+| Professional WordPress: Design and Development |
+| Practical Web Development                      |
++------------------------------------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, DATE_FORMAT(Year, '%Y') AS Year FROM Books ORDER BY registration_date ASC;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    150
+Current database: Books
+
+ERROR 1054 (42S22): Unknown column 'registration_date' in 'order clause'
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, DATE_FORMAT(Year, '%Y') AS Year FROM Books ORDER BY Year ASC;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| PHP and MySQL Web Development                  | NULL |
+| Professional WordPress: Design and Development | NULL |
+| Practical Web Development                      | NULL |
++------------------------------------------------+------+
+3 rows in set, 6 warnings (0.00 sec)
+
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, DATE_FORMAT(Year, '%Y') AS Year FROM Books ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| PHP and MySQL Web Development                  | NULL |
+| Professional WordPress: Design and Development | NULL |
+| Practical Web Development                      | NULL |
++------------------------------------------------+------+
+3 rows in set, 6 warnings (0.00 sec)
+
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, Year FROM Books ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books]> "SELECT CONCAT(Title) AS Title, CONCAT(Year) AS Year ORDER BY Book_id ";^XBye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 162
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| books              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| users              |
++--------------------+
+7 rows in set (0.02 sec)
+
+MariaDB [(none)]> SELECT COUNT(*) CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year' at line 1
+MariaDB [(none)]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year
+    -> ;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use books
+Database changed
+MariaDB [books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [books]> SELECT COUNT(*) CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year' at line 1
+MariaDB [books]> SELECT COUNT(*) CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year' at line 1
+MariaDB [books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [books]> SELECT CONCAT(last_name, ', ', first_name) AS name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr FROM users ORDER BY registration_date ASC;
+ERROR 1146 (42S02): Table 'books.users' doesn't exist
+MariaDB [books]> use users
+Database changed
+MariaDB [users]> SELECT CONCAT(last_name, ', ', first_name) AS name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr FROM users ORDER BY registration_date ASC";
+    "> ;
+    "> '
+    "> ;;;
+    ">
+    "> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 169
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use users;
+Database changed
+MariaDB [users]> SELECT CONCAT(last_name, ', ', first_name) AS name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr FROM users ORDER BY registration_date ASC;
++--------------+------------------+
+| name         | dr               |
++--------------+------------------+
+| luis, luis   | October 31, 2017 |
+| Mario, Mario | October 31, 2017 |
++--------------+------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [users]> use books
+Database changed
+MariaDB [books]> show books
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'books' at line 1
+MariaDB [books]> show books;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'books' at line 1
+MariaDB [books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year
+    -> ;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [books]> SELECT Title AS Title FROM Books;
++------------------------------------------------+
+| Title                                          |
++------------------------------------------------+
+| PHP and MySQL Web Development                  |
+| Professional WordPress: Design and Development |
+| Practical Web Development                      |
++------------------------------------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [books]> SELECT CONCAT(Title) AS Title, Year FROM Books WHERE 1 ORDER BY Year
+    -> ;
++------------------------------------------------+------+
+| Title                                          | Year |
++------------------------------------------------+------+
+| Professional WordPress: Design and Development | 2015 |
+| Practical Web Development                      | 2015 |
+| PHP and MySQL Web Development                  | 2016 |
++------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [books]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 181
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE Books2;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> CREATE TABLE books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN varchar(35) NOT NULL, Author varchar(50) NOT NULL, Title varchar(255) NOT NULL, Year int NOT NULL default 2000);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> USE Books2
+Database changed
+MariaDB [Books2]> CREATE TABLE books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN varchar(35) NOT NULL, Author varchar(50) NOT NULL, Title varchar(255) NOT NULL, Year int NOT NULL default 2000);
+Query OK, 0 rows affected (0.10 sec)
+
+MariaDB [Books2]> select * from books2;
+Empty set (0.00 sec)
+
+MariaDB [Books2]> select * from Books2;
+Empty set (0.00 sec)
+
+MariaDB [Books2]> INSERT INTO Books VALUES(NULL, '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [Books2]> INSERT INTO Books VALUES(NULL, '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [Books2]> INSERT INTO Books VALUES(NULL, '978-1782175919', 'Paul Wellens', 'Practical Web Development', 2015);
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [Books2]> INSERT INTO Books VALUES(NULL, '978-1782175919', 'Paul Wellens', 'Practical Web Development', 2015);
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [Books2]> INSERT INTO Books2 VALUES(NULL, '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [Books2]> INSERT INTO Books2 VALUES(NULL, '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [Books2]> INSERT INTO Books2 VALUES(NULL, '978-1782175919', 'Paul Wellens', 'Practical Web Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [Books2]> SELECT * FROM Books
+    -> ;
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [Books2]> SELECT * FROM Books2
+    -> ;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|  3 | 978-1782175919 | Paul Wellens  | Practical Web Development                      | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 184
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>  grant all on Books.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]>  grant all on Books2.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]>  grant all on Books.* to "adonis"@"localhost";Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 195
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SELECT * FROM Books2
+    -> ;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use Books2
+Database changed
+MariaDB [Books2]> SELECT * FROM Books2
+    -> ;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|  3 | 978-1782175919 | Paul Wellens  | Practical Web Development                      | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [Books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'adonis'@'localhost' (using password: NO)
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 199
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SELECT * FROM Books2;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]> SELECT * FROM Books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|  3 | 978-1782175919 | Paul Wellens  | Practical Web Development                      | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [books2]> DROP DATABASE Books2;
+Query OK, 1 row affected (0.21 sec)
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| books              |
+| information_schema |
+| test               |
+| users              |
++--------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [(none)]> create database Books2;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> use books2;
+Database changed
+MariaDB [books2]> CREATE TABLE Books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN CHAR(35), Author CHAR(50), Title CHAR(255), Year int default 2000);
+Query OK, 0 rows affected (0.02 sec)
+
+MariaDB [books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+#
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 200
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>  grant all on Books2.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> CREATE TABLE Books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN CHAR(35), Author CHAR(50), Title CHAR(255), Year int default 2000);Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 201
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]> SELECT * FROM Books;
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [books2]> SELECT * FROM Books2;
+Empty set (0.00 sec)
+
+MariaDB [books2]> INSERT INTO Books2 VALUES(NULL, '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> SELECT * FROM Books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> >DELETE from Books WHERE book_id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '>DELETE from Books WHERE book_id=1' at line 1
+MariaDB [books2]> DELETE from Books2 WHERE id=1;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> SELECT * FROM Books2;
+Empty set (0.00 sec)
+
+MariaDB [books2]> INSERT INTO Books VALUES( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+ERROR 1146 (42S02): Table 'books2.books' doesn't exist
+MariaDB [books2]> INSERT INTO Books2 VALUES( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [books2]> INSERT INTO Books2 VALUES('1', '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [books2]> SELECT * FROM Books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>   "SELECT Title AS Title, Year FROM Books2 WHERE 1 ORDER BY Year;
+    "> ;
+    "> ^Z^XBye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 219
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]>   SELECT Title AS Title, Year FROM Books2 WHERE 1 ORDER BY Year;
++-------------------------------+------+
+| Title                         | Year |
++-------------------------------+------+
+| PHP and MySQL Web Development | 2016 |
++-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> mysql -u Books2  -p;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u Books2  -p' at line 1
+MariaDB [books2]> mysql -u Books2  -p
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'mysql -u Books2  -p' at line 1
+MariaDB [books2]> DROP DATABASE  Books2;
+Query OK, 1 row affected (0.10 sec)
+
+MariaDB [(none)]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 221
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE Books2;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> CREATE TABLE books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN CHAR(35), Author CHAR(50), Title CHAR(255), Year CHAR(5));
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use books
+Database changed
+MariaDB [books]> use books2
+Database changed
+MariaDB [books2]> CREATE TABLE books2 (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ISBN CHAR(35), Author CHAR(50), Title CHAR(255), Year CHAR(5));
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [books2]> INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  grant all on books2.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 227
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select * from books2;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from Books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    251
+Current database: books2
+
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [books2]> DELETE FROM Books2 WHERE ISBN = 978-1118987247;
+Query OK, 0 rows affected, 2 warnings (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> DELETE FROM Books2 WHERE ISBN= 978-1118987247;
+Query OK, 0 rows affected, 2 warnings (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> delete from books2 where id = ISBN (978-1118987247);
+ERROR 1305 (42000): FUNCTION books2.ISBN does not exist
+MariaDB [books2]> Select id, ISBN where ISBN = 978-1118987247;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where ISBN = 978-1118987247' at line 1
+MariaDB [books2]> Select id, ISBN From Books2 where ISBN = 978-1118987247;
+Empty set, 2 warnings (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  2 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> DELETE FROM Books2 WHERE ISBN='978-1118987247';
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  3 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from Books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  4 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  1 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> SELECT ISBN FROM Books2 WHERE ISBN = '978-0321833891';
++----------------+
+| ISBN           |
++----------------+
+| 978-0321833891 |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> UPDATE Books2 SET ISBN='".$ISBNUpdate."', Title='".$Title."', Author='".Author."', Year='".$Year."';
+Query OK, 1 row affected, 1 warning (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [books2]> select * from books2;
++----+-----------------+------------+------------+-------+
+| id | ISBN            | Author     | Title      | Year  |
++----+-----------------+------------+------------+-------+
+|  1 | ".$ISBNUpdate." | ".Author." | ".$Title." | ".$Ye |
++----+-----------------+------------+------------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  DELETE FROM Books2 WHERE ISBN='".$ISBNUpdate." | ".Author." | ".$Title." | ".$Ye |';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+-----------------+------------+------------+-------+
+| id | ISBN            | Author     | Title      | Year  |
++----+-----------------+------------+------------+-------+
+|  1 | ".$ISBNUpdate." | ".Author." | ".$Title." | ".$Ye |
++----+-----------------+------------+------------+-------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  DELETE FROM Books2 WHERE ISBN='".$ISBNUpdate."';
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
+Empty set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  5 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  5 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  6 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  5 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  5 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 269
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]> INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  5 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
+|  7 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u adonis -p
+Enter password: ******
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 270
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use books2
+Database changed
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  7 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+|  7 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
+|  8 | 978-0321833891 | Luke Welling  | PHP and MySQL Web Development                  | 2016 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  8 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+|  8 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
+|  9 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
+Empty set (0.00 sec)
+
+MariaDB [books2]> INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-0321833891', 'Luke Welling', 'PHP and MySQL Web Development', 2016);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+| 10 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+| 10 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+| 10 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> SELECT ISBN FROM Books2 WHERE ISBN ='978-0321833891 ';
++----------------+
+| ISBN           |
++----------------+
+| 978-0321833891 |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+| 10 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------------+-------------------------------+------+
+| id | ISBN           | Author       | Title                         | Year |
++----+----------------+--------------+-------------------------------+------+
+| 10 | 978-0321833891 | Luke Welling | PHP and MySQL Web Development | 2016 |
++----+----------------+--------------+-------------------------------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------+-------+------+
+| id | ISBN           | Author | Title | Year |
++----+----------------+--------+-------+------+
+| 10 | 978-0321833891 | Author | porn  | 6969 |
++----+----------------+--------+-------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+--------+-------+------+
+| id | ISBN           | Author | Title | Year |
++----+----------------+--------+-------+------+
+| 10 | 978-0321833891 | mario  | porn  | 6969 |
++----+----------------+--------+-------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]> use users
+Database changed
+MariaDB [users]> select * from users
+    -> ;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
+|  3 | luigi      | luigi     | luigi@hotmail.com | d1878f7213a7afa7d418ec69f | 2017-11-04 17:51:15 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [users]> DELETE from users where last_name=luigi;
+ERROR 1054 (42S22): Unknown column 'luigi' in 'where clause'
+MariaDB [users]> DELETE from users where last_name='luigi';
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [users]> select * from users
+    -> ;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [users]> select * from users
+    -> ;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
+|  4 | alina      | alina     | alina@hotmail.com | c542a5c75409b4c42c96dea4f | 2017-11-04 17:58:35 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [users]> select * from users;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
+|  4 | alina      | alina     | alina@hotmail.com | c542a5c75409b4c42c96dea4f | 2017-11-04 17:58:35 |
+|  5 | link       | link      | link@hotmail.com  | 4f0aa52d656a3d75867f784b7 | 2017-11-04 18:03:53 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [users]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+ERROR 1146 (42S02): Table 'users.books2' doesn't exist
+MariaDB [users]> use books2
+Database changed
+MariaDB [books2]> select * from books2;
++----+------+--------+-------+------+
+| id | ISBN | Author | Title | Year |
++----+------+--------+-------+------+
+| 10 | 22   | mario  | porn  | 6969 |
++----+------+--------+-------+------+
+1 row in set (0.00 sec)
+
+MariaDB [books2]>  INSERT INTO books2 (ISBN, Author, Title, Year) VALUES ( '978-1118987247', 'Brad Williams', 'Professional WordPress: Design and Development', 2015);
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [books2]> select * from books2;
++----+----------------+---------------+------------------------------------------------+------+
+| id | ISBN           | Author        | Title                                          | Year |
++----+----------------+---------------+------------------------------------------------+------+
+| 10 | 22             | mario         | porn                                           | 6969 |
+| 11 | 978-1118987247 | Brad Williams | Professional WordPress: Design and Development | 2015 |
++----+----------------+---------------+------------------------------------------------+------+
+2 rows in set (0.00 sec)

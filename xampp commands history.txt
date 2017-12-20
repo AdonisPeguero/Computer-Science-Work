@@ -1,0 +1,123 @@
+Setting environment for using XAMPP for Windows.
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 15
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.01 sec)
+
+MariaDB [(none)]> CREATE DATABASE Users;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> USE Users;
+Database changed
+MariaDB [Users]> CREATE TABLE users (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, first_name CHAR(25), last_name CHAR(25), email CHAR(40), pass CHAR(25), registration_date CHAR(25));
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [Users]> SELECT *FROM Users;
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+1 row in set (0.00 sec)
+
+MariaDB [Users]>
+
+
+
+
+
+                 SELECT *FROM Users;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    34
+Current database: Users
+
++----+------------+-----------+-------------------+---------------------------+---------------------+
+| id | first_name | last_name | email             | pass                      | registration_date   |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+|  1 | luis       | luis      | fdsdd@hotmail.com | faea5242a00c52da62a0f00df | 2017-10-31 15:55:55 |
+|  2 | Mario      | Mario     | 12312@hotmail.com | 8e7d820ad9d3323edb541a72d | 2017-10-31 17:00:09 |
++----+------------+-----------+-------------------+---------------------------+---------------------+
+2 rows in set (0.03 sec)
+
+MariaDB [Users]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 48
+Server version: 10.1.26-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| users              |
++--------------------+
+6 rows in set (0.19 sec)
+
+MariaDB [(none)]> SELECT id FROM Users WHERE username = 'fdsdd@hotmail.com' and password = 'luis';
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use users;
+Database changed
+MariaDB [users]> SELECT id FROM Users WHERE username = 'fdsdd@hotmail.com' and password = 'luis';
+ERROR 1054 (42S22): Unknown column 'username' in 'where clause'
+MariaDB [users]> create user "adonis"@"localhost" identified by "adonis";
+Query OK, 0 rows affected (0.23 sec)
+
+MariaDB [users]> grant users.* to adonis;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.* to adonis' at line 1
+MariaDB [users]> grant users.* to "adonis"@"localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.* to "adonis"@"localhost"' at line 1
+MariaDB [users]> grant all on users.* to "adonis"@"localhost";
+Query OK, 0 rows affected (0.09 sec)
+
+MariaDB [users]> Bye
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+#
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+#
+
+AP151@DESKTOP-2P3PL48 c:\xampp
+# mysqli_num_rows($r)

@@ -1,0 +1,23 @@
+#PBS -N mpi_nbody
+#PBS -q route
+#PBS -e log_error
+#PBS -o log_out
+#PBS -l nodes=4:ppn=8
+#PBS -l walltime=23:00:00
+##PBS -m bea
+# -- change below to your email address for notification
+#PBS -M peguenoa@puma.kean.edu
+PROGRAM='./nbody'
+cd $PBS_O_WORKDIR
+# run the program
+cat $PBS_NODEFILE
+N_NODES=`cat $PBS_NODEFILE | wc -l`
+source /share/apps/modules/Modules/3.2.8/init/bash
+module load mpich2_intel
+time mpirun -np 1 -machinefile $PBS_NODEFILE $PROGRAM
+time mpirun -np 2 -machinefile $PBS_NODEFILE $PROGRAM
+time mpirun -np 4 -machinefile $PBS_NODEFILE $PROGRAM
+time mpirun -np 8 -machinefile $PBS_NODEFILE $PROGRAM
+time mpirun -np 16 -machinefile $PBS_NODEFILE $PROGRAM
+time mpirun -np 32 -machinefile $PBS_NODEFILE $PROGRAM
+exit 0
